@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+
+const allArticles = await getCollection("articles");
+const latestArticles = allArticles
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+
+const formatDate = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-[#0B2545] mb-8">
+      Artigos Recentes
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+      {latestArticles.map((article) => (
+        <a
+          href={`/articles/${article.slug}`}
+          class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col"
+        >
+          <p class="text-xs text-gray-400 mb-2 uppercase tracking-wider">{formatDate(article.data.date)}</p>
+          <h3 class="text-lg font-bold text-[#0B2545] mb-3 group-hover:text-[#1D3A75] transition">
+            {article.data.title}
+          </h3>
+          <p class="text-gray-600 text-sm flex-1">{article.data.description}</p>
+          <span class="mt-4 text-[#0B2545] font-semibold text-sm group-hover:text-[#F9C74F] transition">
+            Leia mais →
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <a
+      href="/articles"
+      class="inline-block mt-10 px-8 py-3 bg-[#0B2545] text-white rounded-full font-semibold hover:bg-[#F9C74F] hover:text-[#0B2545] transition"
+    >
+      Ver todos os artigos
+    </a>
+  </div>
+</section>

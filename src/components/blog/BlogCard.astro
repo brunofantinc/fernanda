@@ -1,0 +1,31 @@
+---
+const { article } = Astro.props;
+const { title, description, image } = article.data;
+const slug = article.slug;
+---
+
+<article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
+  {image && (
+    <a href={`/articles/${slug}`} class="block">
+      <img src={image} alt={title} class="w-full h-56 object-cover" />
+    </a>
+  )}
+
+  <div class="p-6 flex flex-col justify-between flex-1">
+    <div>
+      <h2 class="text-xl font-bold text-[#0B2545] mb-2">
+        <a href={`/articles/${slug}`} class="hover:underline">
+          {title}
+        </a>
+      </h2>
+      <p class="text-gray-600 text-sm mb-4">{description}</p>
+    </div>
+
+    <a
+      href={`/articles/${slug}`}
+      class="text-[#0B2545] font-semibold hover:text-[#F9C74F] transition"
+    >
+      Leia mais →
+    </a>
+  </div>
+</article>
