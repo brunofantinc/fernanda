@@ -9,11 +9,11 @@ const total = features.length;
       Áreas de Atuação
     </h2>
 
-    <div class="relative overflow-hidden" id="carousel-outer">
+    <div class="relative py-3" id="carousel-outer" style="overflow-x: clip;">
       <div id="track" class="flex" style="gap: 24px">
         {features.map((feature) => (
           <div class="slide-item flex-shrink-0">
-            <div class="p-12 bg-gray-50 rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition flex flex-col justify-center items-center text-center h-full">
+            <div class="p-12 bg-gray-50 rounded-xl shadow hover:shadow-md border border-gray-100 transition flex flex-col justify-center items-center text-center h-full">
               <h3 class="text-2xl text-[#313d25] font-semibold mb-4">{feature.title}</h3>
               <p class="text-gray-600 text-lg max-w-xl">{feature.description}</p>
             </div>
@@ -39,23 +39,23 @@ const total = features.length;
 </section>
 
 <script define:vars={{ total }}>
-  const outer   = document.getElementById('carousel-outer');
-  const track   = document.getElementById('track');
-  const GAP     = 24;
-  const RATIO   = 0.78; // active card takes 78% of container width, leaving edges visible
+  const outer = document.getElementById('carousel-outer');
+  const track = document.getElementById('track');
+  const GAP   = 24;
+  const RATIO = 0.78;
 
   // Clone first and last slides for seamless infinite loop
   const origItems = [...track.children];
   track.appendChild(origItems[0].cloneNode(true));
   track.insertBefore(origItems[total - 1].cloneNode(true), origItems[0]);
-  // Layout: [clone-last, slide0, slide1, slide2, clone-first]
+  // Layout: [clone-last, slide0, slide1, ..., clone-first]
 
-  let current     = 1; // start at real first slide
+  let current      = 1;
   let transitioning = false;
 
-  function cardWidth()   { return outer.offsetWidth * RATIO; }
-  function stepSize()    { return cardWidth() + GAP; }
-  function offsetFor(i)  { return -i * stepSize() + (outer.offsetWidth - cardWidth()) / 2; }
+  function cardWidth()  { return outer.offsetWidth * RATIO; }
+  function stepSize()   { return cardWidth() + GAP; }
+  function offsetFor(i) { return -i * stepSize() + (outer.offsetWidth - cardWidth()) / 2; }
 
   function setWidths() {
     const w = cardWidth();
@@ -71,13 +71,15 @@ const total = features.length;
 
   track.addEventListener('transitionend', () => {
     transitioning = false;
-    // Snap from clone to real slide without animation
-    if (current === 0)         moveTo(total, false);
+    if (current === 0)           moveTo(total, false);
     else if (current === total + 1) moveTo(1, false);
   });
 
-  setWidths();
-  moveTo(1, false);
+  // Defer init so the element has a real size (fixes mobile disappearing)
+  requestAnimationFrame(() => {
+    setWidths();
+    moveTo(1, false);
+  });
 
   document.getElementById('prev-slide').addEventListener('click', () => {
     if (transitioning) return;
@@ -92,13 +94,56 @@ const total = features.length;
   });
 
   setInterval(() => {
-    if (transitioning) return;
+    if (transitioning || isDragging) return;
     transitioning = true;
     moveTo(current + 1);
-  }, 3000);
+  }, 5000);
 
   window.addEventListener('resize', () => {
     setWidths();
     moveTo(current, false);
   });
+
+  // --- Drag / swipe support ---
+  let isDragging   = false;
+  let dragStartX   = 0;
+  let dragCurrentX = 0;
+  const DRAG_THRESHOLD = 50;
+
+  function onDragStart(x) {
+    if (transitioning) return;
+    isDragging   = true;
+    dragStartX   = x;
+    dragCurrentX = x;
+    track.style.transition = 'none';
+  }
+
+  function onDragMove(x) {
+    if (!isDragging) return;
+    dragCurrentX = x;
+    const delta = x - dragStartX;
+    track.style.transform = `translateX(${offsetFor(current) + delta}px)`;
+  }
+
+  function onDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    const delta = dragCurrentX - dragStartX;
+    transitioning = true;
+    if (Math.abs(delta) > DRAG_THRESHOLD) {
+      moveTo(delta < 0 ? current + 1 : current - 1);
+    } else {
+      moveTo(current);
+    }
+  }
+
+  // Mouse
+  outer.addEventListener('mousedown', (e) => { onDragStart(e.clientX); });
+  window.addEventListener('mousemove', (e) => { if (isDragging) onDragMove(e.clientX); });
+  window.addEventListener('mouseup', () => onDragEnd());
+
+  // Touch
+  outer.addEventListener('touchstart', (e) => { onDragStart(e.touches[0].clientX); }, { passive: true });
+  outer.addEventListener('touchmove',  (e) => { if (isDragging) onDragMove(e.touches[0].clientX); }, { passive: true });
+  outer.addEventListener('touchend',   () => onDragEnd());
 </script>
