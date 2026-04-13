@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-const { title, date, image } = entry.data;
+const { title, subtitle, date, image, author } = entry.data;
 const formattedDate = new Date(date).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" });
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
@@ -28,11 +28,19 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       />
     )}
 
-    <h1 class="text-3xl md:text-4xl font-bold text-[#313d25] mb-4">
+    <h1 class="text-3xl md:text-4xl font-bold text-[#313d25] mb-2">
       {title}
     </h1>
 
-    <p class="text-gray-500 text-sm mb-8">{formattedDate}</p>
+    {subtitle && (
+      <p class="text-lg text-gray-500 font-medium italic mb-4">{subtitle}</p>
+    )}
+
+    <p class="text-gray-400 text-sm mb-2">{formattedDate}</p>
+
+    {author && (
+      <p class="text-gray-500 text-sm italic mb-8">{author}</p>
+    )}
 
     <div class="prose prose-lg max-w-none text-gray-800">
       <Content />

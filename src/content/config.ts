@@ -4,9 +4,11 @@ const articles = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    subtitle: z.string().optional(),
     description: z.string(),
     date: z.string(),
     image: z.string().optional(),
+    author: z.string().optional(),
   }),
 });
 

@@ -2,6 +2,7 @@
 title: "Os bens particulares e o regime da comunhão parcial de bens: a sub-rogação como instrumento indispensável para a defesa patrimonial"
 description: "Artigo sobre sub-rogação e defesa patrimonial. Saiba como proteger bens de doação e herança na comunhão parcial segundo o STJ."
 date: "December 05, 2025"
+author: "Fernanda Fantin da Costa. Advogada, especialista em Direito Privado pela Escola da Magistratura Federal do Paraná e Controladoria pela Universidade Federal do Paraná. Membro e pesquisadora do Grupo de Estudos em Processo Civil da Pontifícia Universidade Católica do Paraná (GEDPC - PUCPR)."
 ---
 
 ### Resumo
