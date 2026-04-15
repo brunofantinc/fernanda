@@ -1,0 +1,18 @@
+---
+title: "Da Integralização de Imóveis como Capital Social na Empresa e a Imunidade Incondicionada"
+description: "Análise da interpretação minoritária favorável à imunidade incondicionada do ITBI na integralização de imóveis ao capital social, mesmo para empresas com atividade imobiliária preponderante."
+date: "March 17, 2026"
+author: "Fernanda Fantin da Costa. Advogada, especialista em Direito Privado pela Escola da Magistratura Federal do Paraná e Controladoria pela Universidade Federal do Paraná. Membro e pesquisadora do Grupo de Estudos em Processo Civil da Pontifícia Universidade Católica do Paraná (GEDPC - PUCPR)."
+---
+
+Pessoas jurídicas com atividade de índole imobiliária (locações, incorporações, etc.), para as quais os sócios pretendam fazer o uso de imóveis para integralização do capital social, sofrerão, via de regra, a cobrança do ITBI sobre a operação (como condição *sine qua non* para registro, alteração de propriedade e formalização da integralização).
+
+A necessidade de recolhimento e pagamento do imposto é afastada mediante a prova da não preponderância da atividade imobiliária e a aplicação da quarentena (prazo anterior e posterior à integralização), o que é nomeada de imunidade condicionada.
+
+Há decisões e interpretações doutrinárias favoráveis à imunidade incondicionada, que seria a não incidência do imposto de transmissão (ITBI) na integralização de capital até mesmo para os casos de empresas que tenham receita proveniente preponderantemente de atividade imobiliária. Entretanto, essas decisões são minoritárias e são alvo de releitura nos Tribunais. De toda sorte, convém mencionar que a favor dessa interpretação, soma o doutrinador Kiyoshi Harada (no seu livro *ITBI, Doutrina e Prática*) citado pelo Ministro Alexandre de Moraes no julgamento do Tema 796/STF. Harada defende que o artigo 156, §2º, I da Constituição Federal deve ser lido em duas partes, sendo que a exigência de *não* preponderância imobiliária seria exclusiva para operações de fusão, incorporação, cisão ou extinção da pessoa jurídica, não abarcando a hipótese inicial do inciso, que fala da operação de integralização de capital.
+
+Para além da máxima de Harada esposada pelo Ministro Moraes no Tema mencionado, o incidente de Arguição de Inconstitucionalidade de nº 0705115-03.2021.8.07.0018 que tramitou no Tribunal de Justiça do Distrito Federal, em decisão exarada pelo Órgão Especial do Tribunal (composto por todos os desembargadores do Tribunal em referência) acolheu a arguição, o que, em suma, leva à conclusão e aplicação da mesma interpretação do art. 156, §2º da CF citada e atribuída a Harada, que defende a retirada da obrigatoriedade de não exploração precípua da atividade imobiliária a fim de se deferir a imunidade do ITBI na operação de integralização do capital social.
+
+O tema é controverso e, embora as informações acima deflagrem otimismo para os empresários que pretendem afastar o recolhimento, a maioria dos tribunais estaduais vem decidindo a favor do fisco e admitindo a incidência do ITBI nas hipóteses envolvendo empresas com atividade imobiliária.
+
+Importante focar nas alternativas existentes para as empresas, principalmente no que toca o planejamento e valores a integralizar, somado a outros recolhimentos tributários que poderão incidir, a exemplo da hipótese de ganho de capital inclusive (recolhimento a ser realizado através do GCAP), a hipótese de não se optar pela integralização total do valor do bem (quando o bem supera o valor das ações a serem realizadas), a intenção de manter reserva de capital entre outros fatores de interferência contábil e legal.
